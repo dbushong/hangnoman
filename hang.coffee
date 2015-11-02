@@ -1,41 +1,58 @@
-state    = 'splash'
-solution = null
-guessed  = []
-missed   = []
-
-switchState = (newState) ->
-  state = newState
+switchState = (state) ->
+  localStorage.state = state
   $('.state').removeClass 'active'
   $(".state.#{state}").addClass 'active'
 
 updateSolution = ->
+  s = localStorage.solution
+  return unless s?
   c = 'A'
-  s = solution
   while c <= 'Z'
-    s = s.replace new RegExp(c, 'g'), '_' unless c in guessed
+    s = s.replace new RegExp(c, 'g'), '_' unless c in localStorage.guessed
     c = String.fromCharCode(c.charCodeAt(0) + 1)
   $('#solution').text s
-  alert('You win!') unless /_/.test s
+  unless /_/.test s
+    localStorage.state = 'won'
+    alert('You win!')
+
+updateMissed = ->
+  $('#missed').text localStorage.missed.split('').sort().join('')
 
 guess = (c) ->
-  return if !/[A-Z]/.test(c) or c in guessed or c in missed
-  if solution.indexOf(c) > -1
-    guessed.push c
+  if !/[A-Z]/.test(c) or c in localStorage.guessed or c in localStorage.missed
+    return
+  if localStorage.solution.indexOf(c) > -1
+    localStorage.guessed += c
     updateSolution()
   else
-    missed.push c
-    $('#missed').text missed.sort().join('')
+    localStorage.missed += c
+    updateMissed()
+
+restoreGame = ->
+  updateSolution()
+  updateMissed()
+  switchState localStorage.state
 
 $ ->
+  if localStorage.state is 'playing' and confirm 'Resume game in progress?'
+    restoreGame()
+  else
+    localStorage[k] = v for k, v of {
+      state:    'splash'
+      solution: null
+      guessed:  ''
+      missed:   ''
+    }
+
   $('.splash.state').click ->
     switchState 'start'
     $('#enter-solution').focus()
 
   $('.start.state form').submit (e) ->
     e.preventDefault()
-    solution = $('#enter-solution').val()
+    localStorage.solution = $('#enter-solution').val()
       .toUpperCase().replace(/\s\s+/g, ' ').replace(/_/g, '')
-    if /[A-Z]/.test solution
+    if /[A-Z]/.test localStorage.solution
       updateSolution()
       switchState 'playing'
     else
