@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  height: 100%;
+  padding: 15px;
+  margin: 0;
+}
+#container {
+  position: relative;
+  height: 100%;
+}
+#entry {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.state {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+}
+.state.active {
+  display: block;
+}
+.state.splash,
+.state.start {
+  text-align: center;
+}
+.state.playing {
+  letter-spacing: 5px;
+  word-spacing: 15px;
+}
+.title {
+  margin-top: 100px;
+}
+.title img {
+  position: relative;
+  top: 6px;
+}
+.instructions {
+  margin-top: 5px;
+  font-size: 12px;
+}
+#missed {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #e00;
+}
+#enter-solution {
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  font-size: 36px;
+  background-color: #000;
+  color: #fff;
+  border-style: hidden;
+  outline: 0;
+}

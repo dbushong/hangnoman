@@ -1,0 +1,11 @@
+{
+  "name": "hang",
+  "version": "1.0.0",
+  "description": "hangman webapp",
+  "author": "David Bushong <david@bushong.net>",
+  "license": "ISC",
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "stylus": "^0.52.4"
+  }
+}
