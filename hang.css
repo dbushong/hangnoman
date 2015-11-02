@@ -9,7 +9,7 @@ html {
 body {
   background-color: #000;
   color: #fff;
-  font-family: sans-serif-light;
+  font-family: sans-serif-light, sans-serif;
   font-size: 36px;
   height: 100%;
   padding: 15px;
@@ -81,4 +81,7 @@ body {
   color: #fff;
   border-style: hidden;
   outline: 0;
+}
+audio {
+  display: none;
 }

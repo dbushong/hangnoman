@@ -1,13 +1,17 @@
 CACHE MANIFEST
-# v4
+# v5
 hang.css
 hang.js
 index.html
+images/launcher-icon-0-75x.png
+images/launcher-icon-1-5x.png
+images/launcher-icon-1x.png
+images/launcher-icon-2x.png
+images/launcher-icon-3x.png
+images/launcher-icon-4x.png
 jquery-2.1.4.min.js
-launcher-icon-0-75x.png
-launcher-icon-1-5x.png
-launcher-icon-1x.png
-launcher-icon-2x.png
-launcher-icon-3x.png
-launcher-icon-4x.png
 manifest.json
+sounds/grumble.mp3
+sounds/doink.mp3
+sounds/rimshot.mp3
+sounds/drip.mp3

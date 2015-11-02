@@ -1,3 +1,5 @@
+playSound = (snd) -> $("##{snd}")[0].play()
+
 switchState = (state) ->
   localStorage.state = state
   $('.state').removeClass 'active'
@@ -17,18 +19,23 @@ updateSolution = ->
     $s.append $w
   unless /_/.test s
     localStorage.state = 'won'
-    alert('You win!')
+    playSound 'rimshot'
+    #alert('You win!')
 
 updateMissed = ->
   $('#missed').text localStorage.missed.split('').sort().join('')
 
 guess = (c) ->
-  if !/[A-Z]/.test(c) or c in localStorage.guessed or c in localStorage.missed
+  return unless /[A-Z]/.test c
+  if c in localStorage.guessed or c in localStorage.missed
+    playSound 'doink'
     return
   if localStorage.solution.indexOf(c) > -1
+    playSound 'drip'
     localStorage.guessed += c
     updateSolution()
   else
+    playSound 'grumble'
     localStorage.missed += c
     updateMissed()
 
@@ -69,6 +76,5 @@ $ ->
 
   $(document).keydown (e) ->
     return unless localStorage.state is 'playing'
-    e.preventDefault()
     guess String.fromCharCode e.which
     $('#entry').blur()

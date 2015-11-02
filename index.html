@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="cache.manifest">
   <head>
     <title>Blankman</title>
     <link rel="manifest" href="manifest.json">
@@ -10,7 +10,7 @@
     <div id="container">
       <div class="splash state active">
         <div class="title">
-          <img src="launcher-icon-0-75x.png"> Blankman
+          <img src="images/launcher-icon-0-75x.png"> Blankman
         </div>
         <div class="instructions">
           Tap to start new game
@@ -29,5 +29,9 @@
     </div>
     <script src="jquery-2.1.4.min.js"></script>
     <script src="hang.js"></script>
+    <audio preload="auto" id="doink" src="sounds/doink.mp3"></audio>
+    <audio preload="auto" id="drip" src="sounds/drip.mp3"></audio>
+    <audio preload="auto" id="grumble" src="sounds/grumble.mp3"></audio>
+    <audio preload="auto" id="rimshot" src="sounds/rimshot.mp3"></audio>
   </body>
 </html>
