@@ -10,7 +10,11 @@ updateSolution = ->
   while c <= 'Z'
     s = s.replace new RegExp(c, 'g'), '_' unless c in localStorage.guessed
     c = String.fromCharCode(c.charCodeAt(0) + 1)
-  $('#solution').text s
+  $s = $('#solution').empty()
+  for word in s.split(' ')
+    $w = $('<span>').addClass('word')
+    $('<span>').addClass('char').text(c).appendTo($w) for c in word
+    $s.append $w
   unless /_/.test s
     localStorage.state = 'won'
     alert('You win!')
@@ -58,7 +62,13 @@ $ ->
     else
       $('#enter-solution').val ''
 
-  $('#entry').keydown (e) ->
+  $('#enter-solution').keydown (e) ->
+    if e.which is 13
+      e.preventDefault()
+      $('.start.state form').submit()
+
+  $(document).keydown (e) ->
+    return unless localStorage.state is 'playing'
     e.preventDefault()
     guess String.fromCharCode e.which
-    $(this).blur()
+    $('#entry').blur()

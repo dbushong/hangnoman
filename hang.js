@@ -10,7 +10,7 @@
   };
 
   updateSolution = function() {
-    var c, s;
+    var $s, $w, c, i, j, len, len1, ref, s, word;
     s = localStorage.solution;
     if (s == null) {
       return;
@@ -22,7 +22,17 @@
       }
       c = String.fromCharCode(c.charCodeAt(0) + 1);
     }
-    $('#solution').text(s);
+    $s = $('#solution').empty();
+    ref = s.split(' ');
+    for (i = 0, len = ref.length; i < len; i++) {
+      word = ref[i];
+      $w = $('<span>').addClass('word');
+      for (j = 0, len1 = word.length; j < len1; j++) {
+        c = word[j];
+        $('<span>').addClass('char').text(c).appendTo($w);
+      }
+      $s.append($w);
+    }
     if (!/_/.test(s)) {
       localStorage.state = 'won';
       return alert('You win!');
@@ -82,10 +92,19 @@
         return $('#enter-solution').val('');
       }
     });
-    return $('#entry').keydown(function(e) {
+    $('#enter-solution').keydown(function(e) {
+      if (e.which === 13) {
+        e.preventDefault();
+        return $('.start.state form').submit();
+      }
+    });
+    return $(document).keydown(function(e) {
+      if (localStorage.state !== 'playing') {
+        return;
+      }
       e.preventDefault();
       guess(String.fromCharCode(e.which));
-      return $(this).blur();
+      return $('#entry').blur();
     });
   });
 

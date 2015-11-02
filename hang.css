@@ -9,7 +9,7 @@ html {
 body {
   background-color: #000;
   color: #fff;
-  font-family: Roboto, sans-serif;
+  font-family: sans-serif-light;
   font-size: 36px;
   height: 100%;
   padding: 15px;
@@ -44,9 +44,16 @@ body {
 .state.start {
   text-align: center;
 }
-.state.playing {
-  letter-spacing: 5px;
-  word-spacing: 15px;
+#solution span {
+  display: inline-block;
+}
+#solution span.word {
+  white-space: nowrap;
+  margin-right: 30px;
+}
+#solution span.char {
+  width: 30px;
+  text-align: center;
 }
 .title {
   margin-top: 100px;
