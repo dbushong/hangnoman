@@ -1,8 +1,13 @@
 CACHE MANIFEST
-# Version 1
-
-CACHE:
-index.html
-jquery-2.1.4.min.js
+# v3
 hang.css
 hang.js
+index.html
+jquery-2.1.4.min.js
+launcher-icon-0-75x.png
+launcher-icon-1-5x.png
+launcher-icon-1x.png
+launcher-icon-2x.png
+launcher-icon-3x.png
+launcher-icon-4x.png
+manifest.json
