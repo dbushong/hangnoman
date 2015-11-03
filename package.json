@@ -1,7 +1,7 @@
 {
-  "name": "hang",
+  "name": "hangnoman",
   "version": "1.0.0",
-  "description": "hangman webapp",
+  "description": "hangman-without-man webapp",
   "author": "David Bushong <david@bushong.net>",
   "license": "ISC",
   "devDependencies": {
