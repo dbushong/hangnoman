@@ -21,6 +21,10 @@ Features:
 * Launches without browser chrome
 * Launches landscape mode
 
+Bugs:
+
+* Sound doesn't work in offline mode (!?)
+
 TODO:
 
 * iOS support
