@@ -57,7 +57,7 @@ $ ->
 
   $('.splash.state').click ->
     switchState 'start'
-    $('#enter-solution').focus()
+    $('#enter-solution').val('').focus()
 
   $('.start.state form').submit (e) ->
     e.preventDefault()
